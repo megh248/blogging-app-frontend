@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
 
 export default function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -28,6 +29,8 @@ export default function Signup() {
         <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} />
         <button type="submit">Signup</button>
       </form>
+      <br/>
+      <p>Already have an account? <Link to="/login">Login</Link></p>
       <p>{message}</p>
     </div>
   );
