@@ -1,20 +1,24 @@
-import  Signup  from "./components/Signup";
-import Login from "./components/Login";
-import { Route, Routes } from "react-router";
-import { AuthMiddleware } from "./shared/AuthMiddleware";
+import { Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import PrivateRoute from "../src/components/shared/PrivateRoute";
+import PublicRoute from "./components/shared/PublicRoute";
+
 function App() {
   return (
-    <div style={{ padding: "20px" }}>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<AuthMiddleware authRequired={true}><Dashboard/></AuthMiddleware>} />
-        {/* Add more routes as needed */}
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/login" element={<PublicRoute><Login/></PublicRoute>} />
+      <Route path="/signup" element={<PublicRoute><Signup/></PublicRoute>} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   );
 }
 
