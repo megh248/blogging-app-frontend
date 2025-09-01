@@ -1,10 +1,9 @@
 // components/PublicRoute.jsx
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
 
 const PublicRoute = ({ children }) => {
-  const { token } = useContext(AuthContext);
+  const { token } = useSelector((state) => state.auth);
 
   if (token) {
     return <Navigate to="/dashboard" replace />;

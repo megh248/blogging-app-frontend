@@ -8,6 +8,7 @@ import PublicRoute from "./components/shared/PublicRoute";
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<PublicRoute><Login/></PublicRoute>} />
       <Route path="/login" element={<PublicRoute><Login/></PublicRoute>} />
       <Route path="/signup" element={<PublicRoute><Signup/></PublicRoute>} />
       <Route

@@ -16,3 +16,4 @@ const Input = ({ label, type = 'text', value, onChange, placeholder, ...rest }) 
 );
 
 export default Input;
+
